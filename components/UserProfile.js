@@ -1,30 +1,40 @@
-import { Card, Avatar, Button } from 'antd';
-import { useCallback } from 'react/cjs/react.development';
+import { Avatar, Card, Button } from 'antd';
+import React from 'react';
 
-const UserProfile = ({ setIsLoggedIn }) => {
-  const onLogout = useCallback(() => {
-    setIsLoggedIn(false);
-  }, []);
+const dummy = {
+  nickname: '제로초',
+  Posts: [],
+  Followings: [],
+  Followers: [],
+  isLoggedIn: false,
+};
 
+const UserProfile = () => {
   return (
     <Card
       actions={[
         <div key="twit">
           짹짹
-          <br />0
+          <br />
+          {dummy.Posts.length}
         </div>,
-        <div key="followings">
+        <div key="following">
           팔로잉
-          <br />0
+          <br />
+          {dummy.Followings.length}
         </div>,
-        <div key="follwers">
+        <div key="follower">
           팔로워
-          <br />0
+          <br />
+          {dummy.Followers.length}
         </div>,
       ]}
     >
-      <Card.meta avatar={<Avatar>DM</Avatar>} title="dinomoon" />
-      <Button onClick={onLogout}>로그아웃</Button>
+      <Card.Meta
+        avatar={<Avatar>{dummy.nickname[0]}</Avatar>}
+        title={dummy.nickname}
+      />
+      <Button>로그아웃</Button>
     </Card>
   );
 };
